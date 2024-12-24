@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/laba6
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update  # Используется для автоматического обновления схемы базы данных (только в среде разработки)
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl  # Отключает преобразование в snake_case
+    show-sql: true       # Показывает SQL-запросы в логах
+    properties:
+      hibernate:
+        format_sql: true  # Форматирует SQL-запросы в логах

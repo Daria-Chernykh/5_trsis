@@ -1,0 +1,10 @@
+info\stepanoff\trsis\samples\Application.class
+info\stepanoff\trsis\samples\config\SecurityConfiguration.class
+info\stepanoff\trsis\samples\config\SpringDocConfig.class
+info\stepanoff\trsis\samples\rest\StudentRestController.class
+info\stepanoff\trsis\samples\db\dao\StudentRepository.class
+info\stepanoff\trsis\samples\service\StudentService.class
+info\stepanoff\trsis\samples\rest\model\StudentDTO.class
+info\stepanoff\trsis\samples\db\model\StudentPE.class
+info\stepanoff\trsis\samples\rest\model\StudentDataWithoutID.class
+info\stepanoff\trsis\samples\service\StudentServiceImpl.class

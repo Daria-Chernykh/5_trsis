@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="#{auth.error}">Ошибка авторизации</title>
+</head>
+<body>
+
+<h1 style="color: red;" th:text="#{errorMessage}">Авторизуйтесь, чтобы иметь доступ к функциям</h1>
+
+<!-- Кнопка для перехода на страницу логина -->
+<a href="/login">
+    <button th:text="#{toLogin}">Перейти к авторизации</button>
+</a>
+
+</body>
+</html>

@@ -1,0 +1,293 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Lab 2 Rest API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Generated server url"
+    }
+  ],
+  "paths": {
+    "/public/rest/students": {
+      "get": {
+        "tags": [
+          "student-rest-controller"
+        ],
+        "summary": "Получить перечень студентов",
+        "description": "Получить перечень студентов - расширенное описание",
+        "operationId": "browse",
+        "responses": {
+          "200": {
+            "description": "Успешное выполнение",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StudentDTO"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Требуется аутентификация",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StudentDTO"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Аутентификация предоставлена, но у пользователя нет доступа",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StudentDTO"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Ресурс не найден",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StudentDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "student-rest-controller"
+        ],
+        "summary": "Создать новую запись о студенте",
+        "description": "Создать новую запись о студенте - расширенное описание",
+        "operationId": "handleStudentRequest",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudentDataWithoutID"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Успешное выполнение",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentDTO"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Требуется аутентификация",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentDTO"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Аутентификация предоставлена, но у пользователя нет доступа",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentDTO"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Ресурс не найден",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/public/rest/students/fullName/{fullName}": {
+      "get": {
+        "tags": [
+          "student-rest-controller"
+        ],
+        "summary": "Поиск студента по ФИО",
+        "description": "Поиск студента по ФИО - расширенное описание",
+        "operationId": "findByFullName",
+        "parameters": [
+          {
+            "name": "fullName",
+            "in": "path",
+            "description": "ФИО",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешное выполнение",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentDTO"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Требуется аутентификация",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentDTO"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Аутентификация предоставлена, но у пользователя нет доступа",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentDTO"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Ресурс не найден",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/public/rest/students/{id}": {
+      "delete": {
+        "tags": [
+          "student-rest-controller"
+        ],
+        "summary": "Удаление записи о студенте",
+        "description": "Удаление записи о студенте - расширенное описание",
+        "operationId": "delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Идентификатор студента",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешное выполнение"
+          },
+          "401": {
+            "description": "Требуется аутентификация"
+          },
+          "403": {
+            "description": "Аутентификация предоставлена, но у пользователя нет доступа"
+          },
+          "404": {
+            "description": "Ресурс не найден"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "StudentDataWithoutID": {
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "type": "string"
+          },
+          "taskOption": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rating": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "description": "JSON с данными о студенте"
+      },
+      "StudentDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Идентификатор студента",
+            "format": "int32"
+          },
+          "fullName": {
+            "type": "string",
+            "description": "ФИО"
+          },
+          "taskOption": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Вариант задания"
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Число сданных лабораторных"
+          },
+          "rating": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Рейтинг"
+          }
+        },
+        "description": "Студент"
+      }
+    }
+  }
+}

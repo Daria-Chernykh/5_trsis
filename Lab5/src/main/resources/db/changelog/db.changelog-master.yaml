@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: init-database
+      author: Daria-Chernykh
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: users_pkey
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: login
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: pass_hash
+                  type: VARCHAR(255)
+            tableName: users

@@ -1,0 +1,62 @@
+databaseChangeLog:
+  - changeSet:
+      id: init-database
+      author: Daria_Chernykh
+      preConditions:
+        - onFail: HALT
+          not:
+            tableExists:
+              tableName: student
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: student_pkey
+                  name: student_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: fullName
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: taskOption
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: number
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: rating
+                  type: BIGINT
+            tableName: student
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: users_pkey
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: login
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: pass_hash
+                  type: VARCHAR(255)
+            tableName: users
